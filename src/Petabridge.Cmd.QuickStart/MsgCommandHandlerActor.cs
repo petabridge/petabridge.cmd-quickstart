@@ -21,10 +21,10 @@ namespace Petabridge.Cmd.QuickStart
         public MsgCommandHandlerActor(IActorRef messageMemorizer) : base(MsgCommands.Palette)
         {
             _messageMemorizer = messageMemorizer;
-            Receive<Command>(c => c.Name.Equals(MsgCommands.CheckMessages.Name), command => ExecuteCommand(command, HandleFetch));
-            Receive<Command>(c => c.Name.Equals(MsgCommands.Write.Name), command => ExecuteCommand(command, HandleWrite));
-            Receive<Command>(c => c.Name.Equals(MsgCommands.Echo.Name), command => ExecuteCommand(command, HandleEcho));
-            Receive<Command>(c => c.Name.Equals(MsgCommands.Purge.Name), command => ExecuteCommand(command, HandlePurge));
+            Process(MsgCommands.CheckMessages.Name, HandleFetch);
+            Process(MsgCommands.Write.Name, HandleWrite);
+            Process(MsgCommands.Echo.Name, HandleEcho);
+            Process(MsgCommands.Purge.Name, HandlePurge);
         }
 
         public void HandlePurge(Command purge)
