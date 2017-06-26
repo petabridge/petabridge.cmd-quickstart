@@ -9,7 +9,7 @@
     <projectUrl>https://cmd.petabridge.com</projectUrl>
     <iconUrl>https://dl.dropbox.com/u/30149716/SS/nugetPackageLogo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
+    <description>Petabridge.Cmd.QuickStart</description>
     <copyright>Copyright 2017 Petabridge</copyright>
   </metadata>
   <files>
