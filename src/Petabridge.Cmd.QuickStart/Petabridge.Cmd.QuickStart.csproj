@@ -76,6 +76,7 @@
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -90,6 +91,9 @@
     <Compile Include="MsgCommandPaletteHandler.cs" />
     <Compile Include="MsgCommands.cs" />
     <Compile Include="MessageMemorizerActor.cs" />
+    <Compile Include="PetabridgeCmdService.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

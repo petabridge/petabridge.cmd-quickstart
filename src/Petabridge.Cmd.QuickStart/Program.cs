@@ -9,6 +9,8 @@ using System.Configuration;
 using Akka.Actor;
 using Petabridge.Cmd.Cluster;
 using Petabridge.Cmd.Host;
+using System.ServiceProcess;
+using System.Reflection;
 
 namespace Petabridge.Cmd.QuickStart
 {
@@ -16,24 +18,38 @@ namespace Petabridge.Cmd.QuickStart
     {
         private static void Main(string[] args)
         {
-            var actorSystemName = ConfigurationManager.AppSettings["ActorSystemName"];
-
-            var configuration = AkkaConfiguration.GetAkkaConfig(
-                AkkaConfiguration.Sections.AkkaActor,
-                AkkaConfiguration.Sections.AkkaRemote,
-                AkkaConfiguration.Sections.AkkaCluster,
-                AkkaConfiguration.Sections.AkkaPetabridgeCmd);
-
-            using (var actorSys = ActorSystem.Create(actorSystemName, configuration))
+            var servicesToRun = new ServiceBase[]
             {
-                var pbm = PetabridgeCmd.Get(actorSys); // creates the Petabridge.Cmd.Host
-                pbm.RegisterCommandPalette(new MsgCommandPaletteHandler()); // register custom command palette
-                pbm.RegisterCommandPalette(ClusterCommands.Instance);
+                new PetabridgeCmdService()
+            };
 
-                pbm.Start(); // begins listening for incoming connections on Petabridge.Cmd.Host
+            if (Environment.UserInteractive)
+            {
+                var type = typeof(PetabridgeCmdService);
+                const BindingFlags flags = BindingFlags.Instance | BindingFlags.NonPublic;
 
-                actorSys.WhenTerminated.Wait();
+                var onStart = type.GetMethod("OnStart", flags);
+
+                foreach (var service in servicesToRun)
+                {
+                    onStart.Invoke(service, new object[] { null });
+                }
+
+                Console.Title = "Petabridge.Cmd.QuickStart";
+                Console.WriteLine("... Press [Enter] to stop service");
+                Console.ReadLine();
+
+                var onStop = type.GetMethod("OnStop", flags);
+
+                foreach (var service in servicesToRun)
+                {
+                    onStop.Invoke(service, null);
+                }
             }
+            else
+            {
+                ServiceBase.Run(servicesToRun);
+            }            
         }
     }
 }
