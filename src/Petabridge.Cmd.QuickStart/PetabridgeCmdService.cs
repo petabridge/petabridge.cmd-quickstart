@@ -37,7 +37,7 @@ namespace Petabridge.Cmd.QuickStart
 
         protected override void OnStop()
         {
-            _actorSys?.WhenTerminated.Wait();
+            _actorSys?.Terminate().Wait();
         }
     }
 }
