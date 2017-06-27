@@ -37,7 +37,10 @@ namespace Petabridge.Cmd.QuickStart
 
         protected override void OnStop()
         {
-            _actorSys?.Terminate().Wait();
+            if (_actorSys == null) return;
+
+            var coordinatedShutdown = CoordinatedShutdown.Get(_actorSys);
+            coordinatedShutdown.Run().Wait();
         }
     }
 }
