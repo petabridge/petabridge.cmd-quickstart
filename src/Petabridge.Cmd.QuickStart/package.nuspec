@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <authors>Petabridge</authors>
+    <owners>Petabridge</owners>
+    <licenseUrl>https://github.com/petabridge/petabridge.cmd-quickstart/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://cmd.petabridge.com</projectUrl>
+    <iconUrl>https://dl.dropbox.com/u/30149716/SS/nugetPackageLogo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Petabridge.Cmd.QuickStart</description>
+    <copyright>Copyright 2017 Petabridge</copyright>
+  </metadata>
+  <files>
+    <file src="bin\Release\**\*.*" exclude="**\*.xml" />
+  </files>
+</package>
