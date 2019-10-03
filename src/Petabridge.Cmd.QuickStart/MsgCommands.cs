@@ -49,6 +49,6 @@ namespace Petabridge.Cmd.QuickStart
             .WithDescription("Purges all saved messages on the server.").Build();
 
         public static readonly CommandPalette Palette = new CommandPalette("msg",
-            new[] {Write, Echo, CheckMessages, Purge});
+            new[] { Write, Echo, CheckMessages, Purge });
     }
 }

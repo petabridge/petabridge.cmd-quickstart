@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Akka.Actor;
-using Akka.Configuration;
+﻿using Akka.Actor;
 using Petabridge.Cmd.Host;
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Petabridge.Cmd.QuickStart
 {
@@ -76,7 +72,7 @@ namespace Petabridge.Cmd.QuickStart
                 return;
             }
 
-            
+
             try
             {
                 var unit = m.Groups["unit"].Value;

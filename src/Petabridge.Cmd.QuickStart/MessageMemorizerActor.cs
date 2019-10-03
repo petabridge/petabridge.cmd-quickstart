@@ -3,10 +3,10 @@
 //      Copyright (C) 2017 - 2017 Petabridge, LLC <https://petabridge.com>
 // </copyright>
 // -----------------------------------------------------------------------
+using Akka.Actor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Akka.Actor;
 
 namespace Petabridge.Cmd.QuickStart
 {
@@ -29,7 +29,7 @@ namespace Petabridge.Cmd.QuickStart
             {
                 foreach (var msg in _messages)
                     Sender.Tell(new CommandResponse(msg.ToString(), false));
-                        // by setting final:false we signal to client that more responses are coming
+                // by setting final:false we signal to client that more responses are coming
                 Sender.Tell(CommandResponse.Empty); // tells the client not to expect any more responses (final == true)
             });
 
@@ -40,7 +40,7 @@ namespace Petabridge.Cmd.QuickStart
                     _messages.Where(x => x.TimeStamp >= acceptableTime).OrderBy(x => x.TimeStamp).ToList();
                 foreach (var msg in matchingMessages)
                     Sender.Tell(new CommandResponse(msg.ToString(), false));
-                        // by setting final:false we signal to client that more responses are coming
+                // by setting final:false we signal to client that more responses are coming
                 Sender.Tell(CommandResponse.Empty); // tells the client not to expect any more responses (final == true)
             });
 
