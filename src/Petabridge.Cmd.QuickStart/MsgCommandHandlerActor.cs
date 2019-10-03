@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Akka.Actor;
-using Akka.Configuration;
+﻿using Akka.Actor;
 using Petabridge.Cmd.Host;
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Petabridge.Cmd.QuickStart
 {
@@ -21,7 +17,7 @@ namespace Petabridge.Cmd.QuickStart
         public MsgCommandHandlerActor(IActorRef messageMemorizer) : base(MsgCommands.Palette)
         {
             _messageMemorizer = messageMemorizer;
-            Process(MsgCommands.CheckMessages.Name, HandleFetch);
+            Process(MsgCommands.CheckMessages.Name, HandleCheckMessages);
             Process(MsgCommands.Write.Name, HandleWrite);
             Process(MsgCommands.Echo.Name, HandleEcho);
             Process(MsgCommands.Purge.Name, HandlePurge);
@@ -52,7 +48,7 @@ namespace Petabridge.Cmd.QuickStart
             Sender.Tell(new CommandResponse(new MessageMemorizerActor.Message(msg, DateTime.UtcNow, Sender.Path.Name).ToString())); // will echo what was written on commandline
         }
 
-        public void HandleFetch(Command fetch)
+        public void HandleCheckMessages(Command fetch)
         {
             // check if we have a timeframe for the message specified
             // what this code does: scans the set of arguments in `fetch` to see
@@ -76,7 +72,7 @@ namespace Petabridge.Cmd.QuickStart
                 return;
             }
 
-            
+
             try
             {
                 var unit = m.Groups["unit"].Value;
