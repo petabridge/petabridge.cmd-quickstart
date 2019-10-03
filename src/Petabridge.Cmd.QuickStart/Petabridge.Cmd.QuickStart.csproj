@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
+  <Import Project="..\common.props" />
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>$(AppNetCoreFramework)</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Petabridge.Cmd.Host" Version="0.6.3" />
+    <PackageReference Include="Petabridge.Cmd.Host" Version="$(PbmVersion)" />
   </ItemGroup>
 
 </Project>
