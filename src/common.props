@@ -21,6 +21,6 @@
     <TestSdkVersion>16.8.0</TestSdkVersion>
     <AkkaVersion>1.4.12</AkkaVersion>
     <PbmVersion>0.8.1</PbmVersion>
-    <FluentAssertionsVersion>5.9.0</FluentAssertionsVersion>
+    <FluentAssertionsVersion>5.10.3</FluentAssertionsVersion>
   </PropertyGroup>
 </Project>
