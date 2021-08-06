@@ -19,7 +19,7 @@
     <NBenchVersion>1.2.2</NBenchVersion>
     <XunitVersion>2.4.1</XunitVersion>
     <TestSdkVersion>16.10.0</TestSdkVersion>
-    <AkkaVersion>1.4.19</AkkaVersion>
+    <AkkaVersion>1.4.22</AkkaVersion>
     <PbmVersion>1.0.1</PbmVersion>
     <FluentAssertionsVersion>5.10.3</FluentAssertionsVersion>
   </PropertyGroup>
