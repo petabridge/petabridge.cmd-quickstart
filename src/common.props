@@ -20,7 +20,7 @@
     <XunitVersion>2.4.2</XunitVersion>
     <TestSdkVersion>17.1.0</TestSdkVersion>
     <AkkaVersion>1.4.37</AkkaVersion>
-    <PbmVersion>1.1.0</PbmVersion>
+    <PbmVersion>1.2.0</PbmVersion>
     <FluentAssertionsVersion>5.10.3</FluentAssertionsVersion>
   </PropertyGroup>
 </Project>
